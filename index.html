@@ -9,56 +9,67 @@
 </head>
 
 <body>
-    <div>
-        <h1>Gerenciamento de Ativos</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Modelo</th>
-                    <th>Descrição</th>
-                    <th>Etiqueta Allugg</th>
-                    <th>Status</th>
-                    <th>Observações</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-corpo">
+    <div class="container">
+        <h1>Gestão de Estoque TI 🖥️</h1>
 
-            </tbody>
-        </table>
-        <form id="form-equipamento">
-            <div>
-                <label for="modelo">Modelo:</label>
-                <input type="text" id="modelo" required>
-            </div>
+        <section class="form-section">
+            <form id="form-equipamento">
+                <input type="hidden" id="equipamento-id">
+                <div>
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" required>
+                </div>
 
-            <div>
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" rows="3"></textarea>
-            </div>
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" rows="3"></textarea>
+                </div>
 
-            <div>
-                <label for="patrimonio">Patrimônio:</label>
-                <input type="text" id="patrimonio" required>
-            </div>
+                <div>
+                    <label for="patrimonio">Patrimônio:</label>
+                    <input type="text" id="patrimonio" required>
+                </div>
 
-            <div>
-                <label for="status">Status:</label>
-                <select id="status">
-                    <option value="Ativo">Ativo</option>
-                    <option value="Manutenção">Manutenção</option>
-                    <option value="Em uso">Em uso</option>
-                </select>
-            </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <select id="status">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Manutenção">Manutenção</option>
+                        <option value="Em uso">Em uso</option>
+                    </select>
+                </div>
 
-            <div>
-                <label for="observacoes">Observações:</label>
-                <textarea id="observacoes" rows="2"></textarea>
-            </div>
+                <div>
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" rows="2"></textarea>
+                </div>
 
-            <button type="submit">Cadastrar Equipamento</button>
-        </form>
+                <button type="submit">Cadastrar Equipamento</button>
+            </form>
+        </section>
+
+        <hr class="divisor">
+
+        <section class="table-section">
+            <h2>Equipamentos Cadastrados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Modelo</th>
+                        <th>Descrição</th>
+                        <th>Etiqueta Allugg</th>
+                        <th>Status</th>
+                        <th>Observações</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-corpo">
+
+                </tbody>
+            </table>
+        </section>
+    </div>
     </div>
     <script src="script.js"></script>
 </body>
