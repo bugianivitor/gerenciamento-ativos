@@ -20,6 +20,7 @@ async function carregarEquipamento() {
                     <td>${equipamento.patrimonio}</td>
                     <td>${equipamento.status}</td>
                     <td>${equipamento.observacoes}</td>
+                    <td><button id="excluir">🗑️</button></td>
                 </tr>`
             });
         }
@@ -29,3 +30,39 @@ async function carregarEquipamento() {
 }
 
 carregarEquipamento();
+
+const form = document.getElementById('form-equipamento')
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    const novoEquipamento = {
+        modelo: document.getElementById('modelo').value,
+        descricao: document.getElementById('descricao').value,
+        patrimonio: document.getElementById('patrimonio').value,
+        status: document.getElementById('status').value,
+        observacoes: document.getElementById('observacoes').value
+    };
+
+    try {
+        const resposta = await fetch('http://localhost:3000/equipamentos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(novoEquipamento)
+        });
+
+        if (resposta.ok) {
+            alert('Equipamento cadastrado com sucesso! 🎉')
+            form.reset(); // Limpa todos os campos do formulário
+            carregarEquipamento(); // Atualiza a tabela automaticamente
+        } else {
+            alert('Erro ao cadastrar equipamento. ❌');
+        }
+    } catch (erro) {
+        console.error('Erro na requisição:', erro);
+    }
+})
+
+const excluir =

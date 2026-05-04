@@ -14,18 +14,51 @@
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>modelo</th>
-                    <th>descricao</th>
-                    <th>patrimonio</th>
-                    <th>status</th>
-                    <th>observacoes</th>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Descrição</th>
+                    <th>Etiqueta Allugg</th>
+                    <th>Status</th>
+                    <th>Observações</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="tabela-corpo">
 
             </tbody>
         </table>
+        <form id="form-equipamento">
+            <div>
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" required>
+            </div>
+
+            <div>
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" rows="3"></textarea>
+            </div>
+
+            <div>
+                <label for="patrimonio">Patrimônio:</label>
+                <input type="text" id="patrimonio" required>
+            </div>
+
+            <div>
+                <label for="status">Status:</label>
+                <select id="status">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Em uso">Em uso</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" rows="2"></textarea>
+            </div>
+
+            <button type="submit">Cadastrar Equipamento</button>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
