@@ -88,3 +88,16 @@ Registro do que já foi construído na base do back-end (integração, ambiente 
 | ---------- | ----------- |
 | 2026-04-30 | Documentação da fundação: ES Modules, Express, pg, dotenv, `.env`, banco `ativos_ti`, tabela `equipamentos`, pool assíncrono e testes (SELECT / INSERT). |
 | 2026-04-30 | Readme: reintroduzida a seção **Esboço do projeto** (reconstituída a partir do `package.json`, do código e do domínio acordado); mantidas **Progresso** e **Changelog**. |
+
+Evolução da API (Rotas CRUD)
+CORS Habilitado: Instalação e configuração do middleware cors para permitir que o front-end acesse a API.
+
+Implementação do CRUD Completo:
+
+GET /equipamentos: Retorna todos os ativos.
+
+POST /equipamentos: Cadastra um novo ativo (validação de UNIQUE no patrimônio).
+
+PUT /equipamentos/:id: Atualiza dados de um equipamento existente.
+
+DELETE /equipamentos/:id: Remove um equipamento do banco.
