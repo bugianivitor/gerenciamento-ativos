@@ -1,0 +1,30 @@
+/* Configuração geral da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Faz com que as bordas virem uma só linha */
+    margin-top: 20px;
+}
+
+/* Estilo das células */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* O efeito Zebra 🦓 */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Um cinza bem clarinho */
+}
+
+/* Destaque no cabeçalho */
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Muda a cor de fundo da linha quando o mouse passa por cima */
+tbody tr:hover {
+    background-color: #d1e7ff; /* Um azul bem suave */
+    cursor: pointer; /* Transforma a seta em "mãozinha" */
+}
