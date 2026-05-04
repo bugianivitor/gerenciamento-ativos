@@ -69,3 +69,16 @@ tbody tr:hover {
 #form-equipamento button:hover {
     background-color: #218838;
 }
+
+.btn-excluir {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background-color: #c82333;
+}

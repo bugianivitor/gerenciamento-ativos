@@ -14,18 +14,20 @@ async function carregarEquipamento() {
             equipamentos.forEach(equipamento => {
                 corpoTabela.innerHTML +=
                     `<tr>
-                    <td>${equipamento.id}</td>
-                    <td>${equipamento.modelo}</td>
-                    <td>${equipamento.descricao}</td>
-                    <td>${equipamento.patrimonio}</td>
-                    <td>${equipamento.status}</td>
-                    <td>${equipamento.observacoes}</td>
-                    <td><button id="excluir">🗑️</button></td>
-                </tr>`
+                        <td>${equipamento.id}</td>
+                        <td>${equipamento.modelo}</td>
+                        <td>${equipamento.descricao}</td>
+                        <td>${equipamento.patrimonio}</td>
+                        <td>${equipamento.status}</td>
+                        <td>${equipamento.observacoes}</td>
+                        <td>
+                            <button onclick="deletarEquipamento(${equipamento.id})" class="btn-excluir">🗑️ Excluir </button>
+                        </td>
+                    </tr>`
             });
         }
     } catch (erro) {
-        console.lerror('Erro ao buscar dados', erro)
+        console.error('Erro ao buscar dados', erro)
     }
 }
 
@@ -65,4 +67,21 @@ form.addEventListener('submit', async (event) => {
     }
 })
 
-const excluir =
+async function deletarEquipamento(id) {
+    // É sempre bom confirmar com o usuário antes de apagar algo!
+    if (confirm("Tem certeza que deseja excluir este item?")) {
+        try {
+            const resposta = await fetch(`http://localhost:3000/equipamentos/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (resposta.ok) {
+                alert("Equipamento removido! 🚮");
+                // O que precisamos fazer agora para a tabela se atualizar?
+                carregarEquipamento()
+            }
+        } catch (erro) {
+            console.error("Erro ao deletar:", erro);
+        }
+    }
+}
