@@ -1,128 +1,265 @@
+/* --- Tokens (manutenção e consistência visual) --- */
+:root {
+    --color-bg-page: #f4f7f6;
+    --color-surface: #ffffff;
+    --color-text: #333333;
+    --color-text-muted: #718096;
+    --color-text-body: #4a5568;
+    --color-border: #e2e8f0;
+    --color-border-soft: #edf2f7;
+    --color-input-bg: #f8fafc;
+    --color-brand: #ff7a21;
+    --color-brand-hover: #e66a1a;
+    --color-brand-soft: #fffaf0;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --radius-xs: 6px;
+    --transition-fast: border-color 0.2s ease, background-color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e9ecef; /* Um fundo cinza neutro para destacar os cards */
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg-page);
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    padding: clamp(12px, 3vw, 20px);
+    color: var(--color-text);
+    line-height: 1.5;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 900px;
-    margin: 40px auto; /* Centraliza na tela */
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1); /* Sombra suave para dar profundidade */
+    max-width: 1100px;
+    margin: clamp(12px, 2vw, 20px) auto;
+    padding: clamp(20px, 4vw, 30px);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
 }
 
 h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    border-bottom: 3px solid #007bff;
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-
-
-/* Configuração geral da tabela */
-table {
-    width: 100%;
-    border-collapse: collapse; /* Faz com que as bordas virem uma só linha */
-    margin-top: 20px;
-}
-
-/* Estilo das células */
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    color: #1e272e;
     text-align: left;
+    margin: 0 0 20px;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    border-bottom: 3px solid var(--color-brand);
+    padding-bottom: 8px;
 }
 
-/* O efeito Zebra 🦓 */
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Um cinza bem clarinho */
+h2 {
+    color: #1e272e;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 12px;
 }
 
-/* Destaque no cabeçalho */
-thead {
-    background-color: #007bff;
-    color: white;
+.form-section {
+    margin-bottom: 8px;
 }
 
-/* Muda a cor de fundo da linha quando o mouse passa por cima */
-tbody tr:hover {
-    background-color: #d1e7ff; /* Um azul bem suave */
-    cursor: pointer; /* Transforma a seta em "mãozinha" */
+/* Separador entre formulário e tabela */
+.divisor {
+    border: none;
+    height: 1px;
+    margin: 28px 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-border-soft) 15%,
+        var(--color-border-soft) 85%,
+        transparent
+    );
 }
 
+.table-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --- Formulário --- */
 #form-equipamento {
-    background-color: #f9f9f9;
+    background-color: var(--color-surface);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 50px;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-md);
+    margin-bottom: 0;
     display: flex;
-    flex-wrap: wrap; /* Permite que os campos quebrem a linha */
-    gap: 15px;      /* Espaço entre os campos */
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
 }
 
-#form-equipamento div {
+#form-equipamento > div {
     display: flex;
-    flex-direction: column; /* Label em cima do Input */
-    flex: 1 1 200px;        /* Largura flexível */
+    flex-direction: column;
+    flex: 1 1 220px;
+    min-width: min(100%, 200px);
+    gap: 6px;
 }
 
-#form-equipamento input, 
-#form-equipamento select, 
+#form-equipamento div label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+#form-equipamento input,
+#form-equipamento select,
 #form-equipamento textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-input-bg);
+    color: var(--color-text);
+    font: inherit;
+    transition: var(--transition-fast);
+}
+
+#form-equipamento input:focus,
+#form-equipamento select:focus,
+#form-equipamento textarea:focus {
+    border-color: var(--color-brand);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 122, 33, 0.2);
 }
 
 #form-equipamento button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
+    background-color: var(--color-brand);
+    color: #fff;
+    padding: 12px 25px;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-weight: bold;
-    align-self: flex-end; /* Alinha o botão ao final */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    flex: 1 1 100%;
+    min-height: 44px;
 }
 
 #form-equipamento button:hover {
-    background-color: #218838;
+    background-color: var(--color-brand-hover);
 }
 
+#form-equipamento button:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+}
+
+/* --- Tabela --- */
+table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+th {
+    background-color: var(--color-brand);
+    color: #fff;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    text-align: left;
+}
+
+th:first-child {
+    border-top-left-radius: var(--radius-md);
+}
+
+th:last-child {
+    border-top-right-radius: var(--radius-md);
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid var(--color-border-soft);
+    color: var(--color-text-body);
+    vertical-align: top;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: var(--color-brand-soft);
+}
+
+/* --- Botões de ação na tabela --- */
+.btn-editar,
 .btn-excluir {
-    background-color: #dc3545; /* Vermelho */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: var(--radius-xs);
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
     cursor: pointer;
-}
-
-.btn-excluir:hover {
-    background-color: #c82333;
+    transition: var(--transition-fast);
 }
 
 .btn-editar {
-    background-color: #ffc107;
-    color: #212529;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px; /* Espaço entre os botões */
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
 }
 
 .btn-editar:hover {
-    background-color: #e0a800;
+    background-color: #fde68a;
+    border-color: #fbbf24;
+}
+
+.btn-excluir {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.btn-excluir:hover {
+    background-color: #fecaca;
+    border-color: #f87171;
+}
+
+.btn-editar:focus-visible,
+.btn-excluir:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 640px) {
+    #form-equipamento {
+        align-items: stretch;
+    }
+
+    #form-equipamento button {
+        flex-basis: 100%;
+    }
 }
